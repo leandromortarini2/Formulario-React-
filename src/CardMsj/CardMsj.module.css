@@ -1,0 +1,18 @@
+.container {
+  width: 1200px;
+  height: 600px;
+  /* background-color: #242424; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.cards {
+  width: 350px;
+  height: 350px;
+  /* background-color: #242424; */
+  border: 2px solid royalblue;
+  box-shadow: 0 0 20px rgba(143, 140, 140, 0.207);
+  border-radius: 20px;
+  margin: 10px;
+}

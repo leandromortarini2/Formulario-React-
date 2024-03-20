@@ -1,0 +1,27 @@
+.container {
+  width: 1200px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario {
+  width: 400px;
+  margin: 0;
+  height: 500px;
+  border: 2px solid royalblue;
+  display: flex;
+  background-color: #242424;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+.formulario h1 {
+  color: rgb(255, 255, 255);
+}
