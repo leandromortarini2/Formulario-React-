@@ -6,8 +6,11 @@ import { useDispatch } from "react-redux";
 import { getUserSlice } from "../Redux/userSlice";
 import styles from "../Formulario/Formulario.module.css";
 import CardMsj from "../CardMsj/CardMsj";
+import validate from "../helpers/validaciones";
 
 const Formulario = () => {
+  const [Errors, setErrors] = useState({});
+
   const dispatch = useDispatch();
   const [usuarioState, setusuarioState] = useState({
     name: "",
@@ -23,6 +26,7 @@ const Formulario = () => {
       ...usuarioState,
       [name]: value,
     });
+    setErrors(validate({ ...usuarioState, [name]: value }));
   };
 
   const handleSubmit = (event) => {
@@ -33,8 +37,8 @@ const Formulario = () => {
   return (
     <>
       <div className={styles.container}>
+        <h1>FORMULARIO</h1>
         <form onSubmit={handleSubmit} className={styles.formulario}>
-          <h1>FORMULARIO</h1>
           <label htmlFor="name">Nombre: </label>
           <input
             type="text"
@@ -43,7 +47,7 @@ const Formulario = () => {
             value={usuarioState.name}
             onChange={handleInputChange}
           />
-
+          <p className={styles.Errors}>{Errors.name ? Errors.name : null}</p>
           <label htmlFor="lastname">Apellido: </label>
           <input
             type="text"
@@ -52,7 +56,9 @@ const Formulario = () => {
             onChange={handleInputChange}
             value={usuarioState.lastname}
           />
-
+          <p className={styles.Errors}>
+            {Errors.lastname ? Errors.lastname : null}{" "}
+          </p>
           <label htmlFor="email">Email: </label>
           <input
             type="email"
@@ -61,7 +67,7 @@ const Formulario = () => {
             value={usuarioState.email}
             onChange={handleInputChange}
           />
-
+          <p className={styles.Errors}>{Errors.email ? Errors.email : null} </p>
           <label htmlFor="edad">Edad: </label>
           <select
             name="edad"
@@ -74,7 +80,7 @@ const Formulario = () => {
             <option value="36 - 45">entre 36 - 45años</option>
             <option value="46 o mas ">46 o mas</option>
           </select>
-
+          <p className={styles.Errors}>{Errors.edad ? Errors.edad : null} </p>
           <label htmlFor="msj">Mensaje: </label>
           <textarea
             name="msj"
@@ -85,6 +91,7 @@ const Formulario = () => {
             onChange={handleInputChange}
             value={usuarioState.msj}
           ></textarea>
+          <p className={styles.Errors}>{Errors.msj ? Errors.msj : null} </p>
           <button type="submit">Enviar</button>
         </form>
         <CardMsj />
